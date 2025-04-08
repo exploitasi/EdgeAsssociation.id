@@ -1,0 +1,64 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { motion } from "framer-motion";
+
+export default function Home() {
+  const [email, setEmail] = useState("");
+
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white p-6">
+      <div className="flex flex-col items-center justify-center space-y-6 text-center">
+        <motion.img
+          src="/logo-edge.png"
+          alt="Edge Association Logo"
+          className="w-40 h-40"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        />
+        <h1 className="text-3xl font-bold tracking-wide">EdgeAssociation.id</h1>
+        <p className="text-gray-300 max-w-xl">
+          Bergabunglah bersama komunitas Edge! Ikuti kursus, terhubung dengan admin,
+          dan temukan kami di sosial media.
+        </p>
+        <div className="space-x-4">
+          <Button asChild>
+            <a href="https://t.me/ghostbe1" target="_blank">Telegram - 0Z</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="https://t.me/ghostbe2" target="_blank">Telegram - 0N</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="https://www.tiktok.com/@edgeassociation.id?_t=ZS-8vMVcVTb4Pk&_r=1" target="_blank">TikTok</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="https://www.instagram.com/edgeassociation?igsh=eWNhMjI2OHpuMzEx" target="_blank">Instagram</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="mailto:edgeassociation.id@gmail.com" target="_blank">Email</a>
+          </Button>
+        </div>
+        <Card className="w-full max-w-md bg-gray-900 border-gray-700 mt-10">
+          <CardContent className="p-6">
+            <h2 className="text-xl font-semibold mb-4">Gabung Kursus Edge</h2>
+            <Input
+              type="email"
+              placeholder="Masukkan email Anda"
+              className="mb-4"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Button
+              className="w-full"
+              onClick={() => window.open(`https://wa.me/6283867180956?text=Halo%20saya%20mau%20ikut%20kursus%20Edge%20dengan%20email%20${email}`)}
+            >
+              Daftar via WhatsApp
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    </main>
+  );
+}
